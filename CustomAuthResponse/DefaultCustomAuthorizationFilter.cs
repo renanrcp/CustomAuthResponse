@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CustomAuthResponse
 {
-    public class DeafultCustomAuthorizationFilter : ICustomAuthorizationFilter
+    internal class DefaultCustomAuthorizationFilter : ICustomAuthorizationFilter
     {
         public async Task HandleAsync(RequestDelegate next, ActionContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
         {

@@ -68,7 +68,7 @@ namespace CustomAuthResponse
 
             var actionContext = new ActionContext(context, routeData, new ActionDescriptor());
 
-            var handler = context.RequestServices.GetService<ICustomAuthorizationFilter>() ?? new DeafultCustomAuthorizationFilter();
+            var handler = context.RequestServices.GetService<ICustomAuthorizationFilter>() ?? new DefaultCustomAuthorizationFilter();
 
             await handler.HandleAsync(_next, actionContext, policy, authorizeResult);
 

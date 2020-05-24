@@ -11,7 +11,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Routing.Abstractions" Version="2.2.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.4" />
   </ItemGroup>
 
 </Project>
