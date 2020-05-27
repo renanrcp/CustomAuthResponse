@@ -27,10 +27,13 @@ namespace CustomAuthResponse.Sample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Any authentication scheme or policy.
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     .AddJwtBearer();
 
             services.AddAuthorization();
+
+            // Add your custom handler.
             services.UseAuthorizationResponseFilter<CustomAuthorizationHandler>();
 
             services.AddControllers();
@@ -49,6 +52,10 @@ namespace CustomAuthResponse.Sample
             app.UseRouting();
 
             app.UseAuthentication();
+            //app.UseAuthorization();
+
+            // Don't use the default ASP.NET Core authorization
+            // middleware and add the CustomAuthorizationMiddleware.
             app.UseCustomAuthorization();
 
             app.UseEndpoints(endpoints =>
