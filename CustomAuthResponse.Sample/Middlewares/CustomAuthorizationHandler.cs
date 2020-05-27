@@ -20,6 +20,8 @@ namespace CustomAuthResponse.Sample.Middlewares
                 {
                     StatusCode = 401
                 };
+
+                await result.ExecuteResultAsync(context);
             }
         }
     }
