@@ -30,7 +30,7 @@ namespace CustomAuthResponse
             if (context.HasNoContent())
                 return;
 
-            var endpoint = context?.Features?.Get<IEndpointFeature>().Endpoint;
+            var endpoint = context?.GetEndpoint();
 
             if (endpoint.HasContent())
                 context.Items[AuthorizationMiddlewareInvokedWithEndpointKey] = AuthorizationMiddlewareWithEndpointInvokedValue;
