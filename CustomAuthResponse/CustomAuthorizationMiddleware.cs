@@ -11,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CustomAuthResponse
 {
+    /// <summary>
+    /// A custom authorization middleware for use custom auth responses.
+    /// </summary>
     public class CustomAuthorizationMiddleware
     {
         private const string AuthorizationMiddlewareInvokedWithEndpointKey = "__AuthorizationMiddlewareWithEndpointInvoked";
@@ -19,12 +22,24 @@ namespace CustomAuthResponse
         private readonly RequestDelegate _next;
         private readonly IAuthorizationPolicyProvider _policyProvider;
 
+        /// <summary>
+        /// Creates an instance of <see cref="CustomAuthorizationMiddleware" />.
+        /// </summary>
+        /// <param name="next">A function that can process an HTTP request.</param>
+        /// <param name="policyProvider">A type which can provide a <see cref="AuthorizationPolicy" /> 
+        /// for a particular name.</param>
         public CustomAuthorizationMiddleware(RequestDelegate next, IAuthorizationPolicyProvider policyProvider)
         {
             _next = next;
             _policyProvider = policyProvider;
         }
 
+        /// <summary>
+        /// Invoke the middleware for process the current request.
+        /// </summary>
+        /// <param name="context">Encapsulates all HTTP-specific information about an individual HTTP request.</param>
+        /// <returns>A <see cref="Task" /> representing an asynchronous operation for process the
+        /// current Http Request.</returns>
         public async Task InvokeAsync(HttpContext context)
         {
             if (context.HasNoContent())
