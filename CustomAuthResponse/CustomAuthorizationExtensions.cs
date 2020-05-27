@@ -10,6 +10,6 @@ namespace CustomAuthResponse
 
         public static IServiceCollection UseAuthorizationResponseFilter<T>(this IServiceCollection services)
             where T : class, ICustomAuthorizationFilter
-            => services.AddTransient<T>();
+            => services.AddTransient<ICustomAuthorizationFilter, T>();
     }
 }
