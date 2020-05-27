@@ -16,7 +16,7 @@ namespace CustomAuthResponse.Sample.Middlewares
             }
             else
             {
-                var result = new ObjectResult("You must be logged in.")
+                var result = new ObjectResult("You must be logged.")
                 {
                     StatusCode = 401
                 };
