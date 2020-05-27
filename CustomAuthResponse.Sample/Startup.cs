@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CustomAuthResponse.Sample.Middlewares;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,7 @@ namespace CustomAuthResponse.Sample
                     .AddJwtBearer();
 
             services.AddAuthorization();
+            services.UseAuthorizationResponseFilter<CustomAuthorizationHandler>();
 
             services.AddControllers();
         }
@@ -47,7 +49,7 @@ namespace CustomAuthResponse.Sample
             app.UseRouting();
 
             app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseCustomAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
